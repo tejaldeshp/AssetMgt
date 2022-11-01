@@ -1,0 +1,48 @@
+{%extends '_blank.html'%}   
+{%block qux_content%} 
+<div class="container">
+    <div class="row">
+        <div class="col d-flex justify-content-center" style="margin:20px;">
+            {% comment %} Card {% endcomment %}
+            <div class="card" style="width: 30rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Edit Asset</h5>
+                </div>
+                <div class="card-body">
+                    <form action='' method = 'POST'>
+                        {% csrf_token %}
+                            <table class="table">
+                                {{form.as_table}}
+                            </table>
+                        <div class="d-flex justify-content-around">
+                            <button type='submit'class="btn btn-secondary">Update</button>
+                            <a href="{%url 'assetmgt:assetlist'%}" class="btn btn-secondary">Cancel</a> 
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col d-flex justify-content-center" style="margin:20px;">
+            <div class="card" style="width: 30rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Accessories</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        {%for obj in acc_list%}
+                            <li class="list-group-item">{{obj.accessory_type}}</li>
+                        {%endfor%}   
+                    </ul>  
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-around">
+                        <a href="{%url 'assetmgt:acc_add'%}?pk={{id}}" class="btn btn-secondary btn-md">Add Accessory</a>
+                        <a href="{%url 'assetmgt:accessorylist'%}?pk={{id}}" class="btn btn-secondary btn-md">Delete Accessory</a> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>
+{%endblock%}
+

@@ -1,0 +1,94 @@
+{% extends '_token.html' %}
+{% load static %}
+
+{% block stylesheets %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'css/listview.css' %}">
+{% endblock stylesheets %}
+
+{% block ralph_headings %}
+<h1>API Tokens</h1>
+
+<p class='text-secondary'>
+  <i class='fa fa-info-circle fa-sm'></i> API Tokens are required to identify you when you access our APIs. 
+  Do not share this key anywhere public and note it down somewhere safe after you generate it as for security reason
+  you will only be able to see the key once after you generate it. 
+</p>
+{% endblock %}
+
+{% block ralph %}
+<div class="">
+  {% if object_list %}
+  {% csrf_token %}
+    {% for post in object_list %}
+    <div class="mt-4 row no-gutters p-3 row_{{post.id}} shadow bg-light rounded-lg">
+      <div class="col-8 col-md-10 pr-3">
+        <div>
+          <a href="{% url 'qux_token:edit' post.id %}" class="text-left text-nowrap text-truncate pr-3">
+            {{ post.name }}
+          </a>
+        </div>
+
+        <div class="small text-muted text-truncate">
+          Created at {{post.created_at}}
+        </div>
+      </div>
+
+      <div class="col-4 col-md-2 text-right align-self-center">
+          <button class="btn btn-sm btn-danger text-right"
+                  onclick="deletecall('{% url 'qux_token:delete' post.id %}', {{post.id}})">
+            Delete
+          </button>
+      </div>
+    </div>
+    {% endfor %}
+  {% else %}
+  <p class="lead">You have no API Keys yet.</p>
+  {% endif %}
+
+  <div class="row my-4">
+    <div class="col-12 col-md-6 text-sm-left text-nowrap">
+      <a href="{% url 'qux_token:create' %}" class="btn btn-sm btn-primary text-white py-2">
+        <span><i class='fa fa-plus'></i> Create New API KEY</span>
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock ralph %}
+
+{% block customjs %}
+{{ block.super }}
+<script type="text/javascript">
+  function deletecall(url, id) {
+
+    let result = confirm("Are you sure that you want to delete this token?");
+    if (result) {
+      let csrftoken = $("input[name=csrfmiddlewaretoken]").val();
+
+      function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+      }
+
+      $.ajaxSetup({
+        beforeSend: function (xhr, settings) {
+          // if not safe, set csrftoken
+          if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+          }
+        },
+      });
+
+      $.ajax({
+        method: "POST",
+        url: url,
+        success: function () {
+          $(".row_" + id).hide();
+        },
+        error: function () {
+        },
+      });
+    }
+  }
+</script>
+{% endblock %}

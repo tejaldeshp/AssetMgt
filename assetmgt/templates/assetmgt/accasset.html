@@ -1,0 +1,33 @@
+{%extends '_blank.html'%}   
+{%block qux_content%} 
+<div class="container">
+    <div class="row">
+        <div class="col d-flex justify-content-center" style="padding:20px;">
+            <div class="card" style="width: 18rem; border:2px solid grey;">
+                <div class="card-body">
+                    <h5 class="card-title">Asset : {{asset}}</h5>
+                    <hr/>
+                    <h6>Accessories</h6>
+                </div>
+                <ul class="list-group list-group-flush">
+                {%for obj in object_list%}
+                    <li class="list-group-item">* {{obj.accessory_type}}</li>
+                {%endfor%}           
+                </ul>
+            </div>
+        </div>
+    </div> 
+<div>
+    
+<div class="container">  
+    <div class="col d-flex justify-content-center offset-md-5" >
+        <div class="col" style="padding:5px;">
+            <a href="{%url 'assetmgt:assetlist' %}" class="btn btn-secondary" style="padding:10px;">OK</a>
+        <div>
+    </div> 
+</div>   
+
+{%endblock%}
+
+
+

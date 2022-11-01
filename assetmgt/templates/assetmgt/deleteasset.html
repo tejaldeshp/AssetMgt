@@ -1,0 +1,43 @@
+{%extends 'assetmgt/asset_detail.html'%} 
+{%block qux_content%} 
+<div class="d-flex justify-content-center">
+    <h5 style="margin-top:20px; margin-bottom:10px;">Remove Asset</h5>
+</div>
+
+<div class="container">
+    <div class="row">
+        {%block details%}{{ block.super }}{%endblock%}
+    </div>
+    <div class="row">
+        <div class="col d-flex justify-content-center">
+            <p>Are you sure you want to delete this asset?</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col d-flex justify-content-center">
+            <form action='' method = 'POST'>
+                {% csrf_token %}
+                <a href="{%url 'assetmgt:assetlist'%}" class="btn btn-secondary">Cancel</a>
+                <button type='submit'class="btn btn-secondary">Delete</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+{%endblock%}
+
+{% comment %} <form action='' method = 'POST'>
+    {% csrf_token %}
+    {%block details%}{{ block.super }}{%endblock%}
+    <div class="container offset-md-4">
+        <p>Are you sure you want to delete this asset?</p>
+    </div>
+    <div class="container offset-md-5">
+        <a href="{%url 'assetmgt:assetlist'%}" class="btn btn-secondary">Cancel</a>
+        <button type='submit'class="btn btn-secondary">Delete</button>
+    </div>
+</form> {% endcomment %}

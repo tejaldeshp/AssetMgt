@@ -1,0 +1,108 @@
+{%extends '_blank.html'%}
+
+{%block qux_content%}
+<div class="d-flex justify-content-center" style="margin:20px;">
+    {% comment %} Card {% endcomment %}
+    <div class="card" style="width: 30rem;">
+        <div class="card-body">
+            <h5 class="card-title">Add Asset</h5>
+        </div>
+        <div class="card-body">
+            <form action='' method = 'POST'>
+                {% csrf_token %}
+                    <table class="table">
+                        {{assetform.as_table}}
+                    </table>
+                <div class="d-flex justify-content-between">
+                    <button type='submit' name="save_add" class="btn btn-secondary btn-sm" >Save & Add</button>
+                    <button type='submit' name="add" class="btn btn-secondary btn-sm">Save</button>
+                    <button type='submit' name="acc_add" class="btn btn-secondary btn-sm">Add Accessories</button>
+                    <a href="{%url 'assetmgt:assetlist'%}" class="btn btn-secondary btn-sm">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{%endblock%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} change2 {% endcomment %}
+{% comment %} <div class="container">
+    <div class="row">
+    <div class="col d-flex justify-content-center">
+        <h5 style="padding:10px;">Add Asset</h5>
+    </div>
+    <div class="col d-flex justify-content-center">
+        <h5 style="padding:10px;">Add Acessory</h5>
+    </div>
+    </div>
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                <form action='' method = 'POST'>
+                    {% csrf_token %}
+                        <table class="table" style="border:1px solid black; border-radius:5px;">
+                            {{assetform.as_table}}
+                        </table>
+                    <div class="d-flex justify-content-center">
+                        <button type='submit' name="save_add" class="btn btn-secondary" style="margin-right: 30px; margin-left:20px;">Save & Add</button>
+                        <button type='submit' name="add" class="btn btn-secondary" style="margin-right: 30px; margin-left:20px;">Save</button>
+                        <a href="{%url 'assetmgt:assetlist'%}" class="btn btn-secondary"style="margin-right: 30px; margin-left:20px;">Cancel</a>
+                        <a href="{%url 'assetmgt:acc_add'%}" class="btn btn-secondary">Add Accessories</a>   
+                    </div>
+                </form>
+            </div>
+            <div class="col d-flex justify-content-center">
+                <div >
+                </div>
+            </div>
+        </div>
+</div> {% endcomment %}
+
+
+
+
+
+
+
+{% comment %} change1 {% endcomment %}
+{% comment %} <div class="container offset-md-5">
+    <h5 style="padding:10px;">Add Asset</h5>
+</div>
+<div class= >
+<form action='' method = 'POST'>
+    {% csrf_token %}
+    
+        <table class="table ">
+            {{form.as_table}}
+        </table>
+    <div class="container offset-md-4">
+        <button type='submit' name="save_add" class="btn btn-secondary" style="margin-right: 30px; margin-left:80px;">Save & Add</button>
+        <button type='submit' name="add" class="btn btn-secondary" style="margin-right: 30px; margin-left:80px;">Save</button>
+        <a href="{%url 'assetmgt:assetlist'%}" class="btn btn-secondary">Cancel</a>   
+    </div>
+</form>
+</div> {% endcomment %}

@@ -1,0 +1,58 @@
+{%extends '_blank.html'%}
+{%block qux_content%}
+
+<div>
+    <h3 style="text-align:center; padding:20px;">Accessories Available</h3>
+</div>
+
+<div class="container">
+    <div class="row">
+      <div class="col d-flex justify-content-center">
+        <table class="table table-hover table-borderless table-md table-listview" style="border:1px solid grey; border-radius: 10px;margin-left:auto;margin-right:auto;">
+            <tr style="background-color:#b4b4b4;">
+                <th>ID</th>
+                <th>Model ID</th>
+                <th>Type</th>
+                <th>Asset</th>
+                <th></th>
+                <th></th>
+            </tr>
+            {%for obj in accessories_list%}
+            <tr onclick="showdetails({{obj.id}});">
+                <td>{{obj.id}}</td>
+                <td>{{obj.model_id}}</td>
+                <td>{{obj.accessory_type}}</td>
+                <td>{{obj.asset}}</td>
+                <td><a href="{%url 'assetmgt:acc_update' obj.id%}" class="btn btn-secondary">Update</a></td>
+                <td><a href="{%url 'assetmgt:acc_delete' obj.id%}" class="btn btn-secondary">Delete</a></td>
+            </tr>
+            {%empty%}
+                <p>No Data</p>
+            {%endfor%}
+        </table>        
+      </div>
+    </div>
+  </div>
+{%endblock%}
+
+
+{% block customjs %}
+{{ block.super }}
+
+<script>
+    function showdetails(id){
+        console.log(id)
+        window.location.replace(window.location.origin +"/assetmgt/accessories/detail/"+id)
+    }
+
+    function display(){
+        var x = document.getElementById('type').value;
+        var y = (window.location.origin +"/assetmgt/assets/?type="+x)
+        console.log(y)
+        window.location.replace(y)
+    
+    }
+</script>
+
+{% endblock %}
+   

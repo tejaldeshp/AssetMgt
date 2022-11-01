@@ -1,0 +1,173 @@
+{%extends '_blank.html'%}   
+{%block qux_content%}
+    {%block details%}
+    <div class="container">
+        {% comment %} <div class="row">
+            <h5 class="col d-flex justify-content-center" style="padding:10px; padding-left:50px;">Asset Detail</h5>
+            <h5 class="col d-flex justify-content-center" style="padding:10px; padding-left:50px;">Accessories</h5> 
+        </div> {% endcomment %}
+        <div class="row" style="margin:20px;">
+            <div class="col d-flex justify-content-center">
+                <div class="card" style="width: 30rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Asset {{object.id}}</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Model ID: {{object.model_id}}</li>
+                            <li class="list-group-item">Brand: {{object.brand_name}}</li>
+                            <li class="list-group-item">Asset Type: {{object.type_of_asset}}</li>
+                            <li class="list-group-item">Date Procured: {{object.date_procured}}</li>
+                            <li class="list-group-item">Price: {{object.price}}</li>
+                            <li class="list-group-item">User: {{object.user}}</li>
+                            <li class="list-group-item">Date Allotted: {{object.date_allotted}}</li>
+                        </ul>  
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex justify-content-center">
+                <div class="card" style="width: 30rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Accessories</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            {%for obj in acc_list%}
+                                <li class="list-group-item">{{obj.accessory_type}}</li>
+                            {%endfor%}   
+                        </ul>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {%endblock%}
+
+        <div class="row d-flex justify-content-center" style="margin:20px;">
+            <a href="{%url 'assetmgt:assetlist' %}" class="btn btn-secondary" style="padding:10px;">Back</a>
+        </div>
+    
+    
+{%endblock%}
+
+
+{% comment %} 
+<div class="card" style="width: 18rem; border:2px solid grey;">
+                <div class="card-body">
+                    <h5 class="card-title">Asset : {{asset}}</h5>
+                    <hr/>
+                    <h6>Accessories</h6>
+                </div>
+                <ul class="list-group list-group-flush">
+                {%for obj in object_list%}
+                    <li class="list-group-item">* {{obj.accessory_type}}</li>
+                {%endfor%}           
+                </ul>
+            </div>
+ {% endcomment %}
+
+
+{% comment %} prev code {% endcomment %}
+{% comment %} <div class="row" >
+    <h5 class="col d-flex justify-content-center" style="padding:10px; padding-left:50px;">Asset Detail</h5>
+    <h5 class="col d-flex justify-content-center" style="padding:10px; padding-left:50px;">Accessories</h5>
+    </div>
+
+    <div class="container">
+        <div class="row">
+          <div class="col d-flex justify-content-center">
+            <h5>Asset Detail</h5>
+            <div class="card" style="width: 25rem; border:2px solid grey;">
+                <div class="card-body">
+                    <h5 class="card-title">Asset: {{object.id}}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item">Model ID: {{object.model_id}}</li>
+                <li class="list-group-item">Brand: {{object.brand_name}}</li>
+                <li class="list-group-item">Asset Type: {{object.type_of_asset}}</li>
+                <li class="list-group-item">Date Procured: {{object.date_procured}}</li>
+                <li class="list-group-item">Price: {{object.price}}</li>
+                <li class="list-group-item">User: {{object.user}}</li>
+                <li class="list-group-item">Date Allotted: {{object.date_allotted}}</li>
+                </ul>
+            </div>
+          </div>
+          <div class="col d-flex justify-content-center">
+            <h5>Accessories</p>
+          </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+          <div class="col d-flex justify-content-center">
+            <p>hello</p>
+          </div>
+          <div class="col d-flex justify-content-center">
+            2 of 2
+          </div>
+        </div>
+    </div>
+
+
+    <div class="row" style="margin-top:20px;">
+    <div class="container offset-md-5 col d-flex justify-content-center" style="margin-left:auto; margin-right:auto;">  
+                <a href="{%url 'assetmgt:assetlist' %}" class="btn btn-secondary" style="padding:10px;">Back</a>
+    </div>
+    </div>
+
+
+</div> {% endcomment %}
+
+
+
+
+{% comment %} <div class="row">
+    <div class="col d-flex justify-content-center" style="padding:10px; padding-left:50px;">
+        {%block cardassetdata%}
+        <div class="container">
+            <div class="row">
+                <div class="col d-flex justify-content-center" style="padding:20px;">
+                    <div class="card" style="width: 30rem; border:2px solid grey;">
+                        <div class="card-body">
+                            <h5 class="card-title">Asset: {{object.id}}</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Model ID: {{object.model_id}}</li>
+                        <li class="list-group-item">Brand: {{object.brand_name}}</li>
+                        <li class="list-group-item">Asset Type: {{object.type_of_asset}}</li>
+                        <li class="list-group-item">Date Procured: {{object.date_procured}}</li>
+                        <li class="list-group-item">Price: {{object.price}}</li>
+                        <li class="list-group-item">User: {{object.user}}</li>
+                        <li class="list-group-item">Date Allotted: {{object.date_allotted}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div> 
+        <div>
+        {%endblock cardassetdata%}
+    </div> 
+    <div class="col d-flex justify-content-center" style="padding:10px; padding-left:50px;">
+        {%block cardaccdata%}
+        <div class="container">
+            <div class="row">
+                <div class="col d-flex justify-content-center" style="padding:20px;">
+                    <div class="card" style="width: 18rem; border:2px solid grey;">
+                        <div class="card-body">
+                            <h5 class="card-title">Accessory: {{object.id}} {{object.type}}</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Model ID: {{object.model_id}}</li>
+                        <li class="list-group-item">Type: {{object.accessory_type}}</li>
+                        <li class="list-group-item">Asset: {{object.asset}}</li>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+            </div> 
+        <div>
+        {%endblock cardaccdata%}
+    </div>  
+    </div>
+
+ {% endcomment %}

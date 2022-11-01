@@ -1,0 +1,40 @@
+{%extends '_blank.html'%}   
+{%block qux_content%} 
+{%block carddata%}
+<div class="container offset-md-5">
+    <h5 style="padding:10px;">Accessory Detail</h5>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col d-flex justify-content-center" style="padding:20px;">
+            <div class="card" style="width: 18rem; border:2px solid grey;">
+                <div class="card-body">
+                    <h5 class="card-title">Accessory: {{object.id}} {{object.type}}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item">Model ID: {{object.model_id}}</li>
+                <li class="list-group-item">Type: {{object.accessory_type}}</li>
+                <li class="list-group-item">Asset: {{object.asset}}</li>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </div> 
+<div>
+{%endblock carddata%}  
+
+{%if request.user.is_superuser%}    
+<div class="container">  
+    <div class="col d-flex justify-content-center offset-md-5" >
+        <div class="col" style="padding:5px;">
+            <a href="{%url 'assetmgt:acc_update' object.id%}" class="btn btn-secondary" style="padding:10px;">Update</a>
+            <a href="{%url 'assetmgt:acc_delete' object.id %}" class="btn btn-secondary"style="padding:10px; margin:10px;">Delete</a>
+        <div>
+    </div> 
+</div>
+{%endif%}   
+
+{%endblock%}
+
+
+

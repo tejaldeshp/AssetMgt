@@ -1,0 +1,15 @@
+{%extends '_blank.html'%}   
+{%block qux_content%} 
+<form action='' method = 'POST'>
+    {% csrf_token %}
+    <div class="container offset-md-4">
+    <div style = "width:30%; border:1px solid black; border-radius:5px; margin:20px;padding:20px;">
+        {{form.as_p}}
+    </div>
+    </div>
+    <div class="container offset-md-4">
+        <button type='submit'class="btn btn-secondary" style="margin-right: 30px; margin-left:80px;">Update</button>
+        <a href="{%url 'assetmgt:accessorydetail' object.id%}" class="btn btn-secondary">Cancel</a>   
+    </div>
+</form>
+{%endblock%}

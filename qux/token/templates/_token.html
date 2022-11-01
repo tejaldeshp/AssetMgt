@@ -1,0 +1,11 @@
+{% extends base_template %}
+{% load static i18n %}
+
+{% block qux_content %}
+  {% block ralph_messages %}{% endblock %}
+
+  <div class="container-lg my-4"><div class="{{ user }}">
+    {% block ralph_headings %}{% endblock %}
+    {% block ralph %}{% endblock %}
+  </div></div>
+{% endblock %}

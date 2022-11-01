@@ -1,0 +1,14 @@
+{%extends 'assetmgt/accessory_detail.html'%} 
+{%block qux_content%} 
+<form action='' method = 'POST'>
+    {% csrf_token %}
+    {%block carddata%}{{ block.super }}{%endblock carddata%}
+    <div class="container offset-md-4">
+        <p>Are you sure you want to delete this asset?</p>
+    </div>
+    <div class="container offset-md-5">
+        <a href="{%url 'assetmgt:accessorydetail' object.id%}" class="btn btn-secondary">Cancel</a>
+        <button type='submit'class="btn btn-secondary">Delete</button>
+    </div>
+</form>
+{%endblock%}
